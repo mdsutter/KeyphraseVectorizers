@@ -305,7 +305,7 @@ class _KeyphraseVectorizerMixin():
             for token_dict in token_dicts:
                 if TAG in token_dict:
                     del token_dict[TAG]
-        nlp.tokenizer = nlp.Defaults.create_tokenizer(nlp)
+        nlp.tokenizer = nlp.tokenizer
 
         keyphrases_list = []
         if workers != 1:
