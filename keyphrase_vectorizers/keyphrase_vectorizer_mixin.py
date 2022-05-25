@@ -14,6 +14,7 @@ import numpy as np
 import psutil
 import scipy.sparse as sp
 import spacy
+from spacy.symbols import TAG
 
 
 class _KeyphraseVectorizerMixin():
@@ -298,6 +299,13 @@ class _KeyphraseVectorizerMixin():
 
         # add rule based sentence boundary detection
         nlp.add_pipe('sentencizer')
+
+        rules = nlp.Defaults.tokenizer_exceptions
+        for orth, token_dicts in rules.items():
+            for token_dict in token_dicts:
+                if TAG in token_dict:
+                    del token_dict[TAG]
+        nlp.tokenizer = nlp.Defaults.create_tokenizer(nlp)
 
         keyphrases_list = []
         if workers != 1:
