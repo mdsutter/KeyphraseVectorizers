@@ -341,6 +341,7 @@ class _KeyphraseVectorizerMixin():
             prefix_list = [stop_word + ' ' for stop_word in stop_words_list]
             suffix_list = [' ' + stop_word for stop_word in stop_words_list]
             for sentence in tagged_pos_doc:
+                print(sentence)
                 tree = cp.parse(sentence)
                 for subtree in tree.subtrees():
                     if subtree.label() == 'CHUNK':
