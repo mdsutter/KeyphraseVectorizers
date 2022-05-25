@@ -300,13 +300,6 @@ class _KeyphraseVectorizerMixin():
         # add rule based sentence boundary detection
         nlp.add_pipe('sentencizer')
 
-        rules = nlp.Defaults.tokenizer_exceptions
-        for orth, token_dicts in rules.items():
-            for token_dict in token_dicts:
-                if TAG in token_dict:
-                    del token_dict[TAG]
-        nlp.tokenizer = nlp.tokenizer
-
         keyphrases_list = []
         if workers != 1:
             os.environ["TOKENIZERS_PARALLELISM"] = "false"
