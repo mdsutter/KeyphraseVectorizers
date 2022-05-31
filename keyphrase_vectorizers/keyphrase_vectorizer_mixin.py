@@ -322,10 +322,14 @@ class _KeyphraseVectorizerMixin():
 
         cp = nltk.RegexpParser('CHUNK: {(' + pos_pattern + ')}')
         for tagged_doc in nlp.pipe(document_list, n_process=workers):
+            print("Tagging document...")
             tagged_pos_doc = []
             for sentence in tagged_doc.sents:
+                print("SENTENCE :")
+                print(sentence)
                 pos_tagged_sentence = []
                 for word in sentence:
+                    print(word.text, "is tagged with", word.tag_)
                     pos_tagged_sentence.append((word.text, word.tag_))
                 tagged_pos_doc.append(pos_tagged_sentence)
 
