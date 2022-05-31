@@ -277,7 +277,7 @@ class _KeyphraseVectorizerMixin():
 
         # add spaCy POS tags for documents
         spacy_exclude = ['parser', 'ner', 'entity_linker', 'entity_ruler', 'textcat', 'textcat_multilabel',
-                         'lemmatizer', 'morphologizer', 'senter', 'sentencizer', 'transformer']
+                         'lemmatizer', 'senter', 'sentencizer', 'transformer']
         try:
             nlp = spacy.load(spacy_pipeline,
                              exclude=spacy_exclude)
